@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/templates/padrao.xhtml">
+		<ui:define name="barraTitulo">Cadastro de Escola</ui:define>
+		<ui:define name="conteudo">
+			<!-- FORM PRINCIPAL -->
+			<h:form id="form">
+				<p:growl id="messages"/>
+				<fieldset>
+					<h:panelGrid columns="2" columnClasses="alinhaDir width30">
+						<h:column>
+							<h:panelGrid columns="1" id="logomarca">
+								<h:column>
+									<h:graphicImage width="100" url="#{controleEscola.logomarca}" />
+								</h:column>
+							</h:panelGrid>
+							<p:fileUpload 	fileUploadListener="#{controleEscola.fileUpload}"  
+											auto="true"
+    											multiple="false" 
+    											label="Logomarca" 
+    											allowTypes="*.jpg;*.png;*.gif" 
+    											description="Images" 
+    											update="logomarca"/>
+    						</h:column>
+						<h:column>
+							<h:panelGrid columns="2" columnClasses="alinhaDir" >
+								<h:column >
+								</h:column>
+								<h:column >
+									<h:outputText value="Os campos com asterisco (*) s&atilde;o de preenchimento obrigat&oacute;rio." styleClass="campoObrigatorio" />
+								</h:column>
+								<h:outputLabel value="CNPJ:" styleClass="select" />
+								<h:column >
+									<h:inputText type="text" class="textfield" id="cnpj" size="19" value="#{controleEscola.escola.CNPJ}" maxlength="19" requiredMessage="Campo [CNPJ] obrigat&oacute;rio" required="true" alt=""/>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />
+								</h:column>
+								<h:outputLabel value="Escola:" styleClass="select" />
+								<h:column >
+									<h:inputText type="text" class="textfield" id="descricao" size="100" maxlength="100" value="#{controleEscola.escola.descricao}" requiredMessage="Campo [FACULDADE] obrigat&oacute;rio" required="true" alt=""/>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />
+								</h:column>
+								<h:outputLabel value="Inscri&ccedil;&atilde;o Estadual:" styleClass="select" />
+								<h:column >
+									<h:inputText type="text" class="textfield" id="inscricaoEstadual" size="30" maxlength="30" value="#{controleEscola.escola.inscricaoEstadual}" requiredMessage="Campo [INSCRI&Ccedil;&Atilde;O ESTADUAL] obrigat&oacute;rio" required="true" alt=""/>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />
+								</h:column>
+								<h:outputLabel value="Inscri&ccedil;&atilde;o Municipal:" styleClass="select" />
+								<h:column >
+									<h:inputText type="text" class="textfield" id="inscricaoMunicipal" size="30" maxlength="30" value="#{controleEscola.escola.inscricaoMunicipal}" requiredMessage="Campo [INSCRI&Ccedil;&Atilde;O MUNICIPAL] obrigat&oacute;rio" required="true" alt=""/>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />
+								</h:column>
+								<h:outputLabel value="E-mail:" styleClass="select" />
+								<h:column >
+									<h:inputText type="text" class="textfield" id="email" size="100" maxlength="150" value="#{controleEscola.escola.email}" requiredMessage="Campo [E-MAIL] obrigat&oacute;rio" required="true" alt=""/>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />
+								</h:column>
+								<h:outputLabel value="Telefone:" styleClass="select" />
+								<h:column>
+									<p:inputMask id="telefone" size="14" maxlength="14" value="#{controleEscola.escola.telefone}" mask="(99)9999-9999" requiredMessage="Campo [TELEFONE] obrigat&oacute;rio" required="true" alt=""/>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />
+								</h:column>
+								<h:outputLabel value="Fax:" styleClass="select" />
+								<h:column >
+									<p:inputMask id="fax" size="14" maxlength="14" value="#{controleEscola.escola.fax}" alt="" mask="(99)9999-9999"/>
+								</h:column>
+								<h:outputLabel value="Site:" styleClass="select" />
+								<h:column >
+									<h:inputText type="text" class="textfield" id="site" size="100" maxlength="100" value="#{controleEscola.escola.site}" requiredMessage="Campo [SITE] obrigat&oacute;rio" required="true" alt=""/>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />
+								</h:column>
+
+								<h:column >
+									<h:outputLabel value="CEP" />
+								</h:column>
+								<h:column>
+									<p:inputMask id="CEP" size="12" maxlength="9" value="#{controleEscola.escola.endereco.CEP}" alt="CEP" mask="99999-999" />
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+								</h:column>
+								<h:column>
+									<h:outputLabel value="Endere&ccedil;o:" />
+								</h:column>
+								<h:column>
+									<h:inputText id="logradouro" size="50" maxlength="100" value="#{controleEscola.escola.endereco.logradouro}" />
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+									<h:outputLabel value="N&uacute;mero:" />
+									<h:inputText id="numero" size="10" maxlength="10" value="#{controleEscola.escola.endereco.numero}" />
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+								</h:column>
+								<h:column>
+									<h:outputLabel value="Complemento:" />
+								</h:column>
+								<h:column>
+									<h:inputText id="complemento" size="100" maxlength="50" value="#{controleEscola.escola.endereco.complemento}" />
+								</h:column>
+								<h:column>
+									<h:outputLabel value="Bairro:" />
+								</h:column>
+								<h:column>
+									<h:inputText id="bairro" size="100" maxlength="100" value="#{controleEscola.escola.endereco.bairro}" />
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+								</h:column>
+								<h:column>
+									<h:outputLabel value="Cidade:" />
+								</h:column>
+								<h:column>
+									<h:inputText id="cidade" size="86" maxlength="100" value="#{controleEscola.escola.endereco.cidade}" />
+									<h:outputLabel value="(*)" styleClass="campoObrigatorio" />&nbsp;
+									<h:outputLabel value="UF:" />
+									<h:selectOneMenu value="#{controleEscola.escola.endereco.UF}">  
+					                    <f:selectItems value="#{controleEscola.UFS}" var="UF" itemLabel="#{UF}" itemValue="#{UF}" />
+									</h:selectOneMenu>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+								</h:column>
+							</h:panelGrid>
+						</h:column>		
+					</h:panelGrid>
+				</fieldset>
+				<h:outputLink value="manutencao.jsf">
+					<h:graphicImage url="/images/botoes/btnPesquisar.png" class="btnAcoes" />
+				</h:outputLink>
+				<h:graphicImage url="/images/botoes/btnLimpar.png" class="btnAcoes"/>
+				<h:commandLink action="#{controleEscola.gravar}" styleClass="alinhaDir">
+					<h:graphicImage url="/images/botoes/btnGravar.png" class="btnAcoes"/>
+				</h:commandLink>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

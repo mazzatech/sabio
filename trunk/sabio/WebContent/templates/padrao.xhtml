@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+      
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>S&aacute;bio</title>
+		<link href="/sabio/css/padrao.css" rel="stylesheet" type="text/css" media="all" /> 
+		<ui:insert name="head"/>
+	</h:head>
+	<f:view contentType="text/html">
+		<!-- Chama o modal toda vez que o ajax é executado--> 		
+		<p:ajaxStatus onstart="modalMensagem.show();" onsuccess="modalMensagem.hide();"/>  
+		<p:dialog modal="true" widgetVar="modalMensagem" header="Processando"   
+		        draggable="false" closable="false">  
+			<h:form >
+				<h:panelGrid columns="2">
+					<h:graphicImage value="/images/ajaxloading.gif" />  
+					<h:outputText value="Aguarde um momento...."/>
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>  			
+		
+		<p:layout fullPage="true">  
+		    
+		    <p:layoutUnit position="north" size="50" resizable="false" closable="false" collapsible="true">  
+		    </p:layoutUnit>  
+		  
+		    <p:layoutUnit position="south" size="25" resizable="false" closable="false" collapsible="true">  
+		        
+		    </p:layoutUnit>  
+		  
+		    <p:layoutUnit position="west" size="300" header="Menu"  resizable="true" closable="false" collapsible="true" effect="drop">  
+		    
+		    	<p:accordionPanel>  
+				    <p:tab title="Cadastros"> 
+						<p:menu style="width:200px">  
+							<p:submenu label="Itens">
+								<p:menuitem value="Escola" url="/escola/manutencao.jsf"/>
+								<p:menuitem value="Aluno" url="/aluno/manutencao.jsf"/>
+								<p:menuitem value="Banco" url="/banco/manutencao.jsf"/>
+								<p:menuitem value="Campus" url="/unidade/manutencao.jsf"/>
+								<p:menuitem value="Contas" url="/contasBanco/manutencao.jsf"/>
+								<p:menuitem value="Curso" url="/curso/manutencao.jsf"/>
+								<p:menuitem value="Desconto" url="/desconto/manutencao.jsf"/>
+								<p:menuitem value="Disciplina" url="/disciplina/manutencao.jsf"/>
+								<p:menuitem value="Grade Curricular" url="/gradeCurricular/manutencao.jsf"/>
+								<p:menuitem value="Processo Admissão" url="/processoAdmissao/manutencao.jsf"/>
+								<p:menuitem value="Forma de Pagamento" url="/formaPagamento/manutencao.jsf"/>
+								<p:menuitem value="Professor" url="/professor/manutencao.jsf"/>
+								<p:menuitem value="Servi&ccedil;o" url="/servico/manutencao.jsf"/>
+								<p:menuitem value="Status" url="/status/manutencao.jsf"/>
+								<p:menuitem value="Taxa" url="/taxa/manutencao.jsf"/>
+								<p:menuitem value="Titula&ccedil;&atilde;o" url="/titulacao/manutencao.jsf"/>
+								<p:menuitem value="Turma" url="/turma/manutencao.jsf"/>
+							</p:submenu>							    
+						</p:menu> 					    
+				    
+				 	</p:tab>
+				    <p:tab title="Movimentos"> 
+				 	</p:tab>
+				    <p:tab title="Relat&oacute;rios"> 
+				 	</p:tab>
+				    <p:tab title="Seguran&ccedil;a"> 
+				 	</p:tab>
+				 	
+				 	
+				 </p:accordionPanel>
+		    
+		    </p:layoutUnit>  
+		  
+		  
+		    <p:layoutUnit position="center" resizable="true">  
+				<ui:insert name="conteudo"></ui:insert>
+		    </p:layoutUnit>  
+		  
+		</p:layout>  				
+	</f:view>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="Academico" basedir="../" default="deploy">
+
+	<!-- Project settings -->
+	<property name="project.distname" value="Academico" />
+
+	<!-- Local system paths -->
+	<property name="webroot.dir" value="${basedir}/WebContent" />
+	<property name="webinf.dir" value="${webroot.dir}/WEB-INF" />
+	<property name="build.dir" value="f:/Projetos/build" /> 
+
+    <path id="project.class.path" description="Classpath do Projeto">  
+        <fileset dir="${webinf.dir}/lib">  
+            <include name="**/*.jar" />  
+        </fileset>  
+    </path>  
+
+	<!-- define your folder for deployment -->
+	<property name="deploy.dir" value="deploy" />
+
+	<!-- Create binary distribution -->
+	<target name="war" >
+		<mkdir dir="${build.dir}" />
+		<war basedir="${webroot.dir}" warfile="${build.dir}/${project.distname}.war" webxml="${webinf.dir}/web.xml">
+			<exclude name="${webinf.dir}/src/**" />
+			<classes dir="./build/classes" description="Pasta onde estao as classes" />
+		</war>
+
+	</target>
+
+	<target name="deploy" depends="war">
+		<delete file="${deploy.dir}/${project.distname}.war" />
+		<delete dir="${deploy.dir}/${project.distname}" />
+		<copy file="${build.dir}/${project.distname}.war" todir="${deploy.dir}" />
+	</target>
+
+</project>
