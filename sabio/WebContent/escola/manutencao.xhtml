@@ -72,9 +72,7 @@
 						</p:commandLink>
                     	</p:column>
 				</p:dataTable>
-			</h:form>
-			<p:dialog header="Confirma&ccedil;&atilde;o" fixedCenter="true" widgetVar="dlg" visible="false">
-				<h:form>
+				<p:dialog header="Confirma&ccedil;&atilde;o" fixedCenter="true" widgetVar="dlg" visible="false">
 					<h:panelGrid columns="2" style="margin-bottom:10px">
 						<h:column>   
 							<h:outputLabel  value="Deseja Excluir?" />
@@ -84,8 +82,9 @@
 							<p:commandButton value="Nao" update=":form" oncomplete="dlg.hide();"/>
 						</h:column>  
 					</h:panelGrid>
-				</h:form>  
-			</p:dialog>
+				</p:dialog>
+
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </html>
