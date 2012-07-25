@@ -72,16 +72,17 @@
 						</p:commandLink>
                     	</p:column>
 				</p:dataTable>
-				<p:dialog header="Confirma&ccedil;&atilde;o" fixedCenter="true" widgetVar="dlg" visible="false">
-					<h:panelGrid columns="2" style="margin-bottom:10px">
-						<h:column>   
-							<h:outputLabel  value="Deseja Excluir?" />
-						</h:column>
-						<h:column >
-							<p:commandButton value="Sim" action="#{controleEscola.excluir}" update=":lista" oncomplete="dlg.hide();" />  
-							<p:commandButton value="Nao" update=":form" oncomplete="dlg.hide();"/>
-						</h:column>  
-					</h:panelGrid>
+
+				<p:dialog widgetVar="dlg" header="Mensagem" width="300" fixedCenter="true" modal="true">
+					<h:form >
+						<h:panelGrid columns="1">
+							<h:outputText value="Deseja Realmente Excluir ?"/>
+							<h:column >
+				            	<p:commandButton value="Sim" action="#{controleEscola.excluir}" update=":lista" oncomplete="dlg.hide();" />  
+				                <p:commandButton value="N&atilde;o" update=":form" oncomplete="dlg.hide();"/>									
+							</h:column>
+						</h:panelGrid>
+					</h:form>
 				</p:dialog>
 
 			</h:form>
