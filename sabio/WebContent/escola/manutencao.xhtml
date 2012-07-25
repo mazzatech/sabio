@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/templates/padrao.xhtml">
+		<ui:define name="barraTitulo">Cadastro de Escola</ui:define>
+		<ui:define name="conteudo"> 
+			<h:form id="form">
+				<p:growl id="messages"/>
+				<fieldset>
+					<p:tabView>
+						<p:tab title="Manuten&ccedil;&atilde;o">
+							<h:panelGrid columns="2" columnClasses="width150 alinhaDir" >	
+								<h:outputLabel value="CNPJ:" />
+								<h:inputText value="#{controleEscola.pesquisaCNPJ}" styleClass="textfield" size="18" />
+								<h:outputLabel value="Descri&ccedil;&atilde;o:" />
+								<h:inputText value="#{controleEscola.pesquisaDescricao}" styleClass="textfield" size="100" />
+								<h:outputLabel value="Sigla:" />
+								<h:inputText value="#{controleEscola.pesquisaSigla}" styleClass="textfield" size="10" />
+							</h:panelGrid>
+						</p:tab>
+					</p:tabView>
+				</fieldset>
+				<p:commandLink action="#{controleEscola.pesquisar}" update=":lista">
+					<h:graphicImage url="/images/botoes/btnPesquisar.png" styleClass="hand"  />
+				</p:commandLink>
+				<h:commandLink action="#{controleEscola.incluir}" >
+					<h:graphicImage url="/images/botoes/btnNovo.png" styleClass="hand" />
+				</h:commandLink>
+			</h:form>
+			<h:form id="lista" >
+				<p:dataTable value="#{controleEscola.lista}" 
+				             id="id_Lista"
+				             var="escola" 
+							 rowKey="#{escola.codigoEscola}"
+				             paginator="true" 
+				             rows="10" 
+				             rendered="#{not empty controleEscola.lista}" 
+							 firstPageLinkLabel="Primeiro"
+				             previousPageLinkLabel="Anterior"
+				             nextPageLinkLabel ="Pr&oacute;ximo"
+				             lastPageLinkLabel="&Uacute;ltima"
+				             emptyMessage="Nenhum resgistro encontrado"
+				             errorMessage="Ocorreu um erro"
+    			             selection="#{controleEscola.escola}" 
+				             selectionMode="single" >
+					<p:column sortBy="#{escola.descricao}" resizable="true">
+						<f:facet name="header">
+							<h:outputText value="Descri&ccedil;&atilde;o" />
+						</f:facet>
+						<h:outputText value="#{escola.descricao}" />
+					</p:column>
+					<p:column sortBy="#{escola.CNPJ}" resizable="true" styleClass="width100"  >
+						<f:facet name="header">
+							<h:outputText value="CNPJ" />
+						</f:facet>
+						<h:outputText value="#{escola.CNPJ}" />
+					</p:column>
+					<p:column resizable="true" styleClass="width80">
+						<f:facet name="header">
+							<h:outputText value="A&ccedil;&atilde;o" /> 
+						</f:facet>
+						<h:commandLink action="#{controleEscola.alterar}" >  
+							<p:graphicImage url="/images/marcadores/editar.png"  alt="Alterar"/>  
+							<f:setPropertyActionListener target="#{controleEscola.escola}" value="#{escola}"/>
+						</h:commandLink>
+						<p:commandLink onclick="dlg.show();">  
+							<p:graphicImage url="/images/marcadores/apagar.png" alt="Excluir"/>  
+							<f:setPropertyActionListener target="#{controleEscola.escola}" value="#{escola}"/>
+						</p:commandLink>
+                    	</p:column>
+				</p:dataTable>
+			</h:form>
+			<p:dialog header="Confirma&ccedil;&atilde;o" fixedCenter="true" widgetVar="dlg" visible="false">
+				<h:form>
+					<h:panelGrid columns="2" style="margin-bottom:10px">
+						<h:column>   
+							<h:outputLabel  value="Deseja Excluir?" />
+						</h:column>
+						<h:column >
+							<p:commandButton value="Sim" action="#{controleEscola.excluir}" update=":lista" oncomplete="dlg.hide();" />  
+							<p:commandButton value="Nao" update=":form" oncomplete="dlg.hide();"/>
+						</h:column>  
+					</h:panelGrid>
+				</h:form>  
+			</p:dialog>
+		</ui:define>
+	</ui:composition>
+</html>

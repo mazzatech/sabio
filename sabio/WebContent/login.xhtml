@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>S&aacute;bio</title>
+		<link href="/sabio/css/login.css" rel="stylesheet" type="text/css" />
+	</h:head>
+	<body>
+		<div id="principal">
+			<div id="bgLogin">
+				<div id="login">
+					<div id="logo">
+						<img src="/sabio/images/logoLogin.png" alt="Academico" />
+					</div>
+					<div id="loginTopo">
+						<span>Sistema S&aacute;bio</span>
+					</div>
+					<div id="loginMeio">
+						<h:form id="loginForm">
+							<p:focus for="login"/>
+							<table>
+								<tr>
+									<td class="width180"></td>
+									<td> <strong>Bem vindo ao sistema s&aacute;bio</strong>
+									</td>
+								</tr>
+								<tr>
+								 	<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="alinhaDir">Login:</td>
+									<td>
+										<h:inputText id="login" value="#{controleLogin.login}" styleClass="textfield" size="30"/>
+									</td>
+								</tr>
+								<tr>
+									<td class="alinhaDir">Senha:</td>
+									<td>
+										<h:inputSecret id="senha" value="#{controleLogin.senha}" styleClass="textfield" size="30"/>
+									</td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+									<td>
+										<h:commandLink action="#{controleLogin.acessar}" styleClass="alinhaDir">
+											<h:graphicImage url="/images/botoes/btnAcessar.gif" styleClass="imageField"/>
+										</h:commandLink>
+									</td>									
+								</tr>
+								<tr>
+									<td colspan="2">
+										<p:messages/>
+									</td>
+								</tr>
+							</table>
+						</h:form>
+					</div>
+					<div id="loginRodape">
+					</div>
+					<div id="rodapeLogin"><img src="/sabio/images/logoCti.png" alt="" /></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
