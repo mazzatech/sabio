@@ -28,7 +28,7 @@
 				</p:commandLink>
 				<h:commandLink action="#{controleEscola.incluir}" >
 					<h:graphicImage url="/images/botoes/btnNovo.png" styleClass="hand" />
-				</h:commandLink>
+				</h:commandLink>				
 			</h:form>
 			<h:form id="lista" >
 				<p:dataTable value="#{controleEscola.lista}" 
@@ -44,7 +44,6 @@
 				             lastPageLinkLabel="&Uacute;ltima"
 				             emptyMessage="Nenhum resgistro encontrado"
 				             errorMessage="Ocorreu um erro"
-    			             selection="#{controleEscola.escola}" 
 				             selectionMode="single" >
 					<p:column sortBy="#{escola.descricao}" resizable="true">
 						<f:facet name="header">
@@ -62,10 +61,10 @@
 						<f:facet name="header">
 							<h:outputText value="A&ccedil;&atilde;o" /> 
 						</f:facet>
-						<h:commandLink action="#{controleEscola.alterar}" >  
+						<p:commandLink action="#{controleEscola.alterar}" update=":lista" >  
 							<p:graphicImage url="/images/marcadores/editar.png"  alt="Alterar"/>  
 							<f:setPropertyActionListener target="#{controleEscola.escola}" value="#{escola}"/>
-						</h:commandLink>
+						</p:commandLink>
 						<p:commandLink onclick="dlg.show();">  
 							<p:graphicImage url="/images/marcadores/apagar.png" alt="Excluir"/>  
 							<f:setPropertyActionListener target="#{controleEscola.escola}" value="#{escola}"/>
@@ -73,18 +72,15 @@
                     	</p:column>
 				</p:dataTable>
 
-				<p:dialog widgetVar="dlg" header="Mensagem" width="300" fixedCenter="true" modal="true">
-					<h:form >
-						<h:panelGrid columns="1">
-							<h:outputText value="Deseja Realmente Excluir ?"/>
-							<h:column >
-				            	<p:commandButton value="Sim" action="#{controleEscola.excluir}" update=":lista" oncomplete="dlg.hide();" />  
-				                <p:commandButton value="N&atilde;o" update=":form" oncomplete="dlg.hide();"/>									
-							</h:column>
-						</h:panelGrid>
-					</h:form>
+				<p:dialog header="Mensagem" widgetVar="dlg" width="300" fixedCenter="true">				
+					<h:panelGrid columns="1">
+						<h:outputText value="Deseja Realmente Excluir ?"/>
+						<h:column >
+			            	<p:commandButton value="Sim" action="#{controleEscola.excluir}" update=":lista" oncomplete="dlg.hide();" />  
+			                <p:commandButton value="N&atilde;o" update=":form" oncomplete="dlg.hide();"/>									
+						</h:column>
+					</h:panelGrid>
 				</p:dialog>
-
 			</h:form>
 		</ui:define>
 	</ui:composition>
