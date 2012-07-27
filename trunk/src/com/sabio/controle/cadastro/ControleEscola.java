@@ -49,25 +49,18 @@ public class ControleEscola extends ControleSession implements Serializable{
 		super("controleEscola");
 	}
 
-	public void criar(){
-		lista 				= null;
-		pesquisaCNPJ		= null;
-		pesquisaDescricao 	= null;
-		pesquisaSigla		= null;
-		pesquisaNomePessoa	= null;
-		mensagem			= null;
-		escola = new Escola();
-		escola.setEndereco(new Endereco());
-	}
 
 	public Escola getEscola() {
 		return escola;
 	}
 
 	public void limpar(){
-		if (getEscola().getCodigoEscola() == 0){
-			criar();
-		}
+		lista 				= null;
+		pesquisaCNPJ		= null;
+		pesquisaDescricao 	= null;
+		pesquisaSigla		= null;
+		pesquisaNomePessoa	= null;
+		mensagem			= null;
 	}
 
 	public String alterar(){
@@ -76,16 +69,21 @@ public class ControleEscola extends ControleSession implements Serializable{
 	}
 
 	public String incluir(){
-		criar();
+		escola = new Escola();
+		escola.setEndereco(new Endereco());
 		return "cadastro";
 	}
+	
+	public String manutencao(){
+		return "manutencao";
+	}	
 
 	public void pesquisar(){
 		setLista(DAOFactory.getEscolaDAO().getSelecionar(pesquisaCNPJ, pesquisaDescricao, pesquisaSigla));
 	}
 
 	public String gravar(){
-		//getContextPath().replace("sabio", "sabioImages")+
+
 		Validar validador = ValidadorFactory.getValidador();
 		validador.validar(escola);
 		String[] mensagens = validador.getMensagensValidacao();
@@ -93,11 +91,12 @@ public class ControleEscola extends ControleSession implements Serializable{
 		retorno = "manutencao"; 
 
 		if (validador.isOk()){
-			if(getEscola().getCodigoEscola() == 0 ){
+			if(escola.getCodigoEscola() == 0 ){
 				try {
 					DAOFactory.getEscolaDAO().inserir(escola);
 					setMensagem("Cadastro com Sucesso");
 					retorno = "manutencao";
+					limpar();
 				} catch (Exception e) {
 					setMensagem("erro: "+e.getMessage());
 					retorno = "cadastro";
@@ -106,16 +105,18 @@ public class ControleEscola extends ControleSession implements Serializable{
 				try {
 					DAOFactory.getEscolaDAO().alterar(escola);
 					retorno = "manutencao";
+					limpar();
 				} catch (Exception e) {
 					retorno = "cadastro";
 					setMensagem("erro: "+e.getMessage());
 				}
 				setMensagem("Altera&ccedil;&atilde;o com Sucesso");
 			}
+			pesquisar();
 
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,getMensagem(), ""));
+			enviaMensagem(mensagem, ControleSession.INFO);
 		}else{
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,getMensagem(), ""));
+			enviaMensagem(mensagem, ControleSession.ERROR);
 			retorno = "cadastro";
 		}
 		return retorno;
