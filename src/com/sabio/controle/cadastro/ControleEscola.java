@@ -45,7 +45,7 @@ public class ControleEscola extends ControleSession implements Serializable{
 	private List<String> UFS;
 	private String logomarca;
 
-	public ControleEscola(){
+	public ControleEscola() {
 		super("controleEscola");
 	}
 

@@ -119,12 +119,9 @@
 						</h:column>		
 					</h:panelGrid>
 				</fieldset>
-				<h:outputLink value="manutencao.jsf">
-					<h:graphicImage url="/images/botoes/btnPesquisar.png" class="btnAcoes" />
-				</h:outputLink>
-				<h:commandLink action="#{controleEscola.gravar}" styleClass="alinhaDir">
-					<h:graphicImage url="/images/botoes/btnGravar.png" class="btnAcoes"/>
-				</h:commandLink>				
+				<p:commandButton value="Pesquisar" action="#{controleEscola.manutencao}" icon="ui-icon-search" ajax="false" immediate="true" />
+				<p:commandButton value="Gravar" action="#{controleEscola.gravar}" icon="ui-icon-disk" />
+				
 			</h:form>
 		</ui:define>
 	</ui:composition>

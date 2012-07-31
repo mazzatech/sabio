@@ -10,4 +10,5 @@ public class DAOFactory {
 	public static PessoaDAO getPessoaDAO(){
 		return new PessoaDAOHibernate();
 	}
+	
 }
