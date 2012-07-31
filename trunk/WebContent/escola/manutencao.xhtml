@@ -23,12 +23,8 @@
 						</p:tab>
 					</p:tabView>
 				</fieldset>
-				<p:commandLink action="#{controleEscola.pesquisar}" update=":lista">
-					<h:graphicImage url="/images/botoes/btnPesquisar.png" styleClass="hand"  />
-				</p:commandLink>
-				<h:commandLink action="#{controleEscola.incluir}" >
-					<h:graphicImage url="/images/botoes/btnNovo.png" styleClass="hand" />
-				</h:commandLink>				
+				<p:commandButton value="Pesquisar" action="#{controleEscola.pesquisar}" icon="ui-icon-search" update=":lista" />
+				<p:commandButton value="Novo" action="#{controleEscola.incluir}" icon="ui-icon-document" />
 			</h:form>
 			<h:form id="lista" >
 				<p:dataTable value="#{controleEscola.lista}" 
