@@ -12,29 +12,22 @@ import javax.persistence.Transient;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class PlanoSaude implements Serializable{
+public class GrauParentesco implements Serializable{
 	@Transient
-	private static final long serialVersionUID = -4022439240301113313L;
+	private static final long serialVersionUID = -5966226919781742469L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int codigoPlanoSaude;
+	@GeneratedValue (strategy = GenerationType.AUTO)
+	private int codigoGrauParentesco;
 
 	@NotEmpty(message="O campo DESCRICAO nao pode ser vazio")
-	@Column(length = 100,nullable = false)
+	@Column(name = "descricao", nullable = false, length = 100)
 	private String descricao;
 
-	public PlanoSaude() {
+	public GrauParentesco() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getCodigoPlanoSaude() {
-		return codigoPlanoSaude;
-	}
-
-	public void setCodigoPlanoSaude(int codigoPlanoSaude) {
-		this.codigoPlanoSaude = codigoPlanoSaude;
-	}
 
 	public String getDescricao() {
 		return descricao;
@@ -44,13 +37,29 @@ public class PlanoSaude implements Serializable{
 		this.descricao = descricao;
 	}
 
+
+
+	public int getCodigoGrauParentesco() {
+		return codigoGrauParentesco;
+	}
+
+
+
+	public void setCodigoGrauParentesco(int codigoGrauParentesco) {
+		this.codigoGrauParentesco = codigoGrauParentesco;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + codigoPlanoSaude;
+		result = prime * result + codigoGrauParentesco;
+		result = prime * result
+				+ ((descricao == null) ? 0 : descricao.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -60,9 +69,15 @@ public class PlanoSaude implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PlanoSaude other = (PlanoSaude) obj;
-		if (codigoPlanoSaude != other.codigoPlanoSaude)
+		GrauParentesco other = (GrauParentesco) obj;
+		if (codigoGrauParentesco != other.codigoGrauParentesco)
+			return false;
+		if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (!descricao.equals(other.descricao))
 			return false;
 		return true;
 	}
+
 }

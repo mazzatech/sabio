@@ -12,28 +12,28 @@ import javax.persistence.Transient;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class PlanoSaude implements Serializable{
+public class Etnia implements Serializable{
 	@Transient
-	private static final long serialVersionUID = -4022439240301113313L;
+	private static final long serialVersionUID = -2118330138677060830L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int codigoPlanoSaude;
+	@GeneratedValue (strategy = GenerationType.AUTO)
+	private int codigoEtnia;
 
-	@NotEmpty(message="O campo DESCRICAO nao pode ser vazio")
-	@Column(length = 100,nullable = false)
+	@NotEmpty(message="O campo SITE não pode ser vazio")
+	@Column (nullable=false, length=100)
 	private String descricao;
 
-	public PlanoSaude() {
+	public Etnia() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getCodigoPlanoSaude() {
-		return codigoPlanoSaude;
+	public int getCodigoEtnia() {
+		return codigoEtnia;
 	}
 
-	public void setCodigoPlanoSaude(int codigoPlanoSaude) {
-		this.codigoPlanoSaude = codigoPlanoSaude;
+	public void setCodigoEtnia(int codigoEtnia) {
+		this.codigoEtnia = codigoEtnia;
 	}
 
 	public String getDescricao() {
@@ -48,7 +48,7 @@ public class PlanoSaude implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + codigoPlanoSaude;
+		result = prime * result + codigoEtnia;
 		return result;
 	}
 
@@ -60,8 +60,8 @@ public class PlanoSaude implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PlanoSaude other = (PlanoSaude) obj;
-		if (codigoPlanoSaude != other.codigoPlanoSaude)
+		Etnia other = (Etnia) obj;
+		if (codigoEtnia != other.codigoEtnia)
 			return false;
 		return true;
 	}
