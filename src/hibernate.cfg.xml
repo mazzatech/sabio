@@ -23,16 +23,17 @@
 	  <property name="hibernate.format_sql">false</property>
 	  <property name="use_sql_comments">false</property>
 	  <property name="current_session_context_class">thread</property>
-	  
-	  
+
 	  <!-- Classes Persistida -->
 	  <mapping class="com.sabio.bean.Escola"/>
-	  <mapping class="com.sabio.bean.Pessoa"/>
-	  <mapping class="com.sabio.bean.Parametro"/>
-	  <mapping class="com.sabio.bean.PlanoSaude"/>
+	  <mapping class="com.sabio.bean.Etnia"/>
 	  <mapping class="com.sabio.bean.FichaMedica"/>
-	  	  
-	  
+	  <mapping class="com.sabio.bean.GrauParentesco"/>
+	  <mapping class="com.sabio.bean.Parametro"/>
+	  <mapping class="com.sabio.bean.Parentesco"/>
+	  <mapping class="com.sabio.bean.Pessoa"/>
+	  <mapping class="com.sabio.bean.PlanoSaude"/>
+
 	  <!-- Envers Configuration comes HERE -->    
 	  <listener class="org.hibernate.envers.event.AuditEventListener" type="post-insert"/>
 	  <listener class="org.hibernate.envers.event.AuditEventListener" type="post-update"/>
