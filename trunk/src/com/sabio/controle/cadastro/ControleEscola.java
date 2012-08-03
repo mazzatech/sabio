@@ -45,6 +45,7 @@ public class ControleEscola extends ControleSession implements Serializable{
 	private List<String> UFS;
 	private String logomarca;
 
+
 	public ControleEscola() {
 		super("controleEscola");
 	}
@@ -198,6 +199,7 @@ public class ControleEscola extends ControleSession implements Serializable{
 		return UFS;
 	}
 
+	
 	/**
 	 * LOGOMARCA
 	 */
@@ -265,4 +267,7 @@ public class ControleEscola extends ControleSession implements Serializable{
 	public void setLogomarca(String logomarca){
 		this.logomarca = logomarca;
 	}
+	
+
+	
 }
