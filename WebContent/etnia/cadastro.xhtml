@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/templates/padrao.xhtml">
+		<ui:define name="barraTitulo"> Cadastro de Etnia</ui:define>
+		<ui:define name="conteudo">
+			<!-- FORM PRINCIPAL -->
+			<h:form id="form">
+				<p:growl id="messages"/>
+				<fieldset>
+					<h:panelGrid columnClasses="alinhaDir width30">
+						<h:column>
+							<h:panelGrid columns="2" columnClasses="alinhaDir" >
+								<h:column >
+								</h:column>
+								<h:column >
+									<h:outputText value="Os campos com asterisco (*) s&atilde;o de preenchimento obrigat&oacute;rio." styleClass="campoObrigatorio" />
+								</h:column>
+								<h:outputLabel value="Descri&ccedil;&atilde;o:" styleClass="select" />
+								<h:column >
+									<h:inputText type="text" class="textfield" id="etnia" size="80" value="#{controleEtnia.descricao}" maxlength="100" requiredMessage="Campo [DESCRI&Ccedil;&Atilde;O] obrigat&oacute;rio" required="true" alt=""/>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />
+								</h:column>
+							</h:panelGrid>
+						</h:column>		
+					</h:panelGrid>
+				</fieldset>
+				<p:commandButton value="Pesquisar" action="#{controleEtnia.manutencao}" icon="ui-icon-search" ajax="false" immediate="true" />
+				<p:commandButton value="Gravar" action="#{controleEtnia.gravar}" icon="ui-icon-disk" />
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>
