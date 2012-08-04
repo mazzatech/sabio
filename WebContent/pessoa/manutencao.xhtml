@@ -5,7 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 	<ui:composition template="/templates/padrao.xhtml">
-		<ui:define name="barraTitulo">Cadastro de Etnia</ui:define>
+		<ui:define name="barraTitulo">Cadastro de Pessoa</ui:define>
 		<ui:define name="conteudo"> 
 			<h:form id="form">
 				<p:growl id="messages"/>
@@ -13,14 +13,18 @@
 					<p:tabView>
 						<p:tab title="Manuten&ccedil;&atilde;o">
 							<h:panelGrid columns="2" columnClasses="width150 alinhaDir" >	
-								<h:outputLabel value="Descri&ccedil;&atilde;o:" />
-								<h:inputText value="#{controleEtnia.pesquisaDescricao}" styleClass="textfield" size="80" maxlength="100" />
+								<h:outputLabel value="CPF:" />
+								<h:inputText value="#{controlePessoa.pesquisaCPF}" styleClass="textfield" size="15" maxlength="11" />
+								<h:outputLabel value="RG:" />
+								<h:inputText value="#{controlePessoa.pesquisaRG}" styleClass="textfield" size="20" maxlength="20" />
+								<h:outputLabel value="Nome:" />
+								<h:inputText value="#{controlePessoa.pesquisaNome}" styleClass="textfield" size="80" maxlength="100" />
 							</h:panelGrid>
 						</p:tab>
 					</p:tabView>
 				</fieldset>
-				<p:commandButton value="Pesquisar" action="#{controleEtnia.pesquisar}" icon="ui-icon-search" update=":lista" />
-				<p:commandButton value="Novo" action="#{controleEtnia.incluir}" icon="ui-icon-document" />
+				<p:commandButton value="Pesquisar" action="#{controlePessoa.pesquisar}" icon="ui-icon-search" update=":lista" />
+				<p:commandButton value="Novo" action="#{controlePessoa.incluir}" icon="ui-icon-document" />
 			</h:form>
 			<h:form id="lista" >
 				<p:dataTable value="#{controleEtnia.lista}" 
