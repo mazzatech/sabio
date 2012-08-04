@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/templates/padrao.xhtml">
+		<ui:define name="barraTitulo"> Cadastro de Etnia</ui:define>
+		<ui:define name="conteudo">
+			<!-- FORM PRINCIPAL -->
+			<h:form id="form">
+				<p:growl id="messages"/>
+				<fieldset>
+					<h:panelGrid columnClasses="alinhaDir">
+						<h:column>
+							<h:panelGrid columns="2" columnClasses="alinhaDir" >
+								<h:column >
+								</h:column>
+								<h:column >
+									<h:outputText value="Os campos com asterisco (*) s&atilde;o de preenchimento obrigat&oacute;rio." styleClass="campoObrigatorio" />
+								</h:column>
+								<h:outputLabel value="CPF:" styleClass="select" />
+								<h:column >
+									<h:inputText type="text" class="textfield" id="cpf" size="15" value="#{controlePessoa.pessoa.CPF}" maxlength="11" requiredMessage="Campo [CPF] obrigat&oacute;rio" required="true" alt=""/>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />
+								</h:column>
+								<h:outputLabel value="RG:" styleClass="select" />
+								<h:column >
+									<h:inputText type="text" class="textfield" id="rg" size="15" value="#{controlePessoa.pessoa.RG}" maxlength="11" requiredMessage="Campo [RG] obrigat&oacute;rio" required="true" alt=""/>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />
+								</h:column>
+								<h:outputLabel value="Nome:" />
+								<h:column >
+									<h:inputText value="#{controlePessoa.pessoa.nome}" styleClass="textfield" size="80" maxlength="100" requiredMessage="Campo [RG] obrigat&oacute;rio"/>
+								</h:column>
+								<h:outputLabel value="Data Nascimento:" />
+								<h:column >
+									<p:calendar value="#{controlePessoa.pessoa.dataNascimento}" mode="popup" pattern="dd/MM/yyyy" requiredMessage="Campo [RG] obrigat&oacute;rio"/>
+								</h:column>
+								<h:column>
+									<h:outputLabel value="Sexo:" />
+								</h:column>
+								<h:column>
+									<h:selectOneMenu value="#{controlePessoa.pessoa.sexo}">  
+					                    <f:selectItems value="#{controlePessoa.listaSexos}" var="sexo" itemLabel="#{sexo}" itemValue="#{sexo}" />
+									</h:selectOneMenu>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+								</h:column>
+								<h:column>
+									<h:outputLabel value="Estado Civil:" />
+								</h:column>
+								<h:column>
+									<h:selectOneMenu value="#{controlePessoa.pessoa.estadoCivil}" requiredMessage="Campo [ESTADO CIVIL] obrigat&oacute;rio" required="true" >  
+					                    <f:selectItems value="#{controlePessoa.listaEstadoCivis}" var="estadoCivil" itemLabel="#{estadoCivil}" itemValue="#{estadoCivil}"   />
+									</h:selectOneMenu>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+									
+									<h:outputLabel value="Nacionalidade:" />&nbsp;
+									<h:selectOneMenu value="#{controlePessoa.pessoa.nacionalidade}" requiredMessage="Campo [NACIONALIDADE] obrigat&oacute;rio" required="true" >  
+					                    <f:selectItems value="#{controlePessoa.listaNacionalidades}" var="nacionalidade" itemLabel="#{nacionalidade}" itemValue="#{nacionalidade}" />
+									</h:selectOneMenu>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+								</h:column>
+								<h:outputLabel value="Email:" />
+								<h:column >
+									<h:inputText value="#{controlePessoa.pessoa.email}" styleClass="textfield" size="80" maxlength="100" />
+								</h:column>
+								<h:outputLabel value="Escolaridade:" />
+								<h:column >
+									<h:inputText value="#{controlePessoa.pessoa.escolaridade}" styleClass="textfield" size="80" maxlength="100" requiredMessage="Campo [ESCOLARIDADE] obrigat&oacute;rio"/>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+								</h:column>
+								<h:outputLabel value="Profissao" />
+								<h:column >
+									<h:inputText value="#{controlePessoa.pessoa.profissao}" styleClass="textfield" size="80" maxlength="100" requiredMessage="Campo [PROFISSAO] obrigat&oacute;rio"/>
+									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+								</h:column>
+							</h:panelGrid>
+							<p:panel menuTitle="TESTE">
+								<h:panelGrid columns="2" columnClasses="alinhaDir" title="Certidao Nascimento">
+									<h:outputLabel value="Numero" />
+									<h:column >
+										<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.numeroCertidaoNascimento}" styleClass="textfield" size="30" maxlength="30"/>
+										<h:outputLabel value="Livro" />
+										<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.livro}" styleClass="textfield" size="30" maxlength="30"/>
+										<h:outputLabel value="Folha" />
+										<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.folha}" styleClass="textfield" size="30" maxlength="30"/>
+									</h:column>
+								</h:panelGrid>
+							</p:panel>
+						</h:column>		
+					</h:panelGrid>
+				</fieldset>
+				<p:commandButton value="Pesquisar" action="#{controleEtnia.manutencao}" icon="ui-icon-search" ajax="false" immediate="true" />
+				<p:commandButton value="Gravar" action="#{controleEtnia.gravar}" icon="ui-icon-disk" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>
