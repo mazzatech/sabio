@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/templates/padrao.xhtml">
+		<ui:define name="barraTitulo">Cadastro de Plano Saude</ui:define>
+		<ui:define name="conteudo"> 
+			<h:form id="form">
+				<p:growl id="messages"/>
+				<fieldset>
+					<p:tabView>
+						<p:tab title="Manuten&ccedil;&atilde;o">
+							<h:panelGrid columns="2" columnClasses="width150 alinhaDir" >	
+								<h:outputLabel value="Descri&ccedil;&atilde;o:" />
+								<h:inputText value="#{controlePlanoSaude.pesquisaDescricao}" styleClass="textfield" size="80" maxlength="100" />
+							</h:panelGrid>
+						</p:tab>
+					</p:tabView>
+				</fieldset>
+				<p:commandButton value="Pesquisar" action="#{controlePlanoSaude.pesquisar}" icon="ui-icon-search" update=":lista" />
+				<p:commandButton value="Novo" action="#{controlePlanoSaude.incluir}" icon="ui-icon-document" />
+			</h:form>
+			<h:form id="lista" >
+				<p:dataTable value="#{controlePlanoSaude.lista}" 
+				             id="id_Lista"
+				             var="planoSaude" 
+							 rowKey="#{planoSaude.codigoPlanoSaude}"
+				             paginator="true" 
+				             rows="10" 
+				             rendered="#{not empty controlePlanoSaude.lista}" 
+							 firstPageLinkLabel="Primeiro"
+				             previousPageLinkLabel="Anterior"
+				             nextPageLinkLabel ="Pr&oacute;ximo"
+				             lastPageLinkLabel="&Uacute;ltima"
+				             emptyMessage="Nenhum resgistro encontrado"
+				             errorMessage="Ocorreu um erro"
+				             selectionMode="single" >
+					<p:column sortBy="#{planoSaude.descricao}" resizable="true">
+						<f:facet name="header">
+							<h:outputText value="Descri&ccedil;&atilde;o" />
+						</f:facet>
+						<h:outputText value="#{planoSaude.descricao}" />
+					</p:column>
+					<p:column resizable="true" styleClass="width80">
+						<f:facet name="header">
+							<h:outputText value="A&ccedil;&atilde;o" /> 
+						</f:facet>
+						<p:commandLink action="#{controlePlanoSaude.alterar}" update=":lista" >  
+							<p:graphicImage url="/images/marcadores/editar.png"  alt="Alterar"/>  
+							<f:setPropertyActionListener target="#{controlePlanoSaude.planoSaude}" value="#{planoSaude}"/>
+						</p:commandLink>
+						<p:commandLink onclick="dlg.show();">  
+							<p:graphicImage url="/images/marcadores/apagar.png" alt="Excluir"/>  
+							<f:setPropertyActionListener target="#{controlePlanoSaude.planoSaude}" value="#{planoSaude}"/>
+						</p:commandLink>
+                    	</p:column>
+				</p:dataTable>
+				<p:dialog header="Mensagem" widgetVar="dlg" width="300" fixedCenter="true">				
+					<h:panelGrid columns="1">
+						<h:outputText value="Deseja Realmente Excluir ?"/>
+						<h:column >
+			            	<p:commandButton value="Sim" action="#{controlePlanoSaude.excluir}" update=":lista" oncomplete="dlg.hide();" />  
+			                <p:commandButton value="N&atilde;o" update=":form" oncomplete="dlg.hide();"/>									
+						</h:column>
+					</h:panelGrid>
+				</p:dialog>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

@@ -76,18 +76,47 @@
 									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
 								</h:column>
 							</h:panelGrid>
-							<p:panel menuTitle="TESTE">
+							<p:panel>
 								<h:panelGrid columns="2" columnClasses="alinhaDir" title="Certidao Nascimento">
 									<h:outputLabel value="Numero" />
-									<h:column >
-										<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.numeroCertidaoNascimento}" styleClass="textfield" size="30" maxlength="30"/>
-										<h:outputLabel value="Livro" />
-										<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.livro}" styleClass="textfield" size="30" maxlength="30"/>
-										<h:outputLabel value="Folha" />
-										<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.folha}" styleClass="textfield" size="30" maxlength="30"/>
-									</h:column>
+									<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.numeroCertidaoNascimento}" styleClass="textfield" size="30" maxlength="30"/>
+									<h:outputLabel value="Livro" />
+									<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.livro}" styleClass="textfield" size="30" maxlength="30"/>
+									<h:outputLabel value="Folha" />
+									<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.folha}" styleClass="textfield" size="30" maxlength="30"/>
 								</h:panelGrid>
 							</p:panel>
+							<h:panelGrid columns="2" columnClasses="alinhaDir" >
+								<h:column>
+									<h:outputLabel value="Parentesco" />
+								</h:column>
+								<h:column>
+									<p:dataTable value="#{controlePessoa.pessoa.parentescos}" 
+									             id="id_Lista_Parentesco"
+									             var="parentesco" 
+												 rowKey="#{parentesco.codigoParentesco}"
+									             rendered="#{not empty controleParentesco.lista}" 
+									             emptyMessage="Nenhum parentesco encontrado"
+									             errorMessage="Ocorreu um erro"
+									             selectionMode="single" >
+										<p:column sortBy="#{parentesco.pessoa.nome}" resizable="true">
+											<f:facet name="header">
+												<h:outputText value="Nome" />
+											</f:facet>
+											<h:outputText value="#{parentesco.pessoa.nome}" />
+										</p:column>
+										<p:column sortBy="#{parentesco.grauParentesco.descricao}" resizable="true">
+											<f:facet name="header">
+												<h:outputText value="Grau" />
+											</f:facet>
+											<h:outputText value="#{parentesco.grauParentesco.descricao}" />
+										</p:column>
+									</p:dataTable>
+								</h:column>
+								<p:commandLink oncomplete="modalPsqParentes.show();"  >
+									<h:graphicImage url="/images/botoes/btnSelecionar.png" styleClass="iconesLaterais" />
+								</p:commandLink>
+							</h:panelGrid>
 						</h:column>		
 					</h:panelGrid>
 				</fieldset>
@@ -95,5 +124,7 @@
 				<p:commandButton value="Gravar" action="#{controleEtnia.gravar}" icon="ui-icon-disk" />
 			</h:form>
 		</ui:define>
+		<p:dialog header="Pesquisa Parentesco" widgetVar="modalPsqParentes" modal="true" onCloseUpdate="form" width="600"  id="boxPsqParentes">
+		</p:dialog>
 	</ui:composition>
 </html>
