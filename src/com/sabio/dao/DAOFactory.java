@@ -12,4 +12,12 @@ public class DAOFactory {
 	public static EtniaDAO getEtniaDAO(){
 		return new EtniaDAOHibernate();
 	}
+
+	public static GrauParentescoDAO getGrauParentescoDAO(){
+		return new GrauParentescoDAOHibernate();
+	}
+
+	public static PlanoSaudeDAO getPlanoSaudeDAO(){
+		return new PlanoSaudeDAOHibernate();
+	}
 }
