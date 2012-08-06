@@ -124,7 +124,9 @@
 				<p:commandButton value="Gravar" action="#{controleEtnia.gravar}" icon="ui-icon-disk" />
 			</h:form>
 		</ui:define>
-		<p:dialog header="Pesquisa Parentesco" widgetVar="modalPsqParentes" modal="true" onCloseUpdate="form" width="600"  id="boxPsqParentes">
-		</p:dialog>
+		<ui:define name="dialog">
+			<p:dialog header="Pesquisa Parentesco" widgetVar="modalPsqParentes" modal="true" onCloseUpdate="form" width="600"  id="boxPsqParentes">
+			</p:dialog>
+		</ui:define>	
 	</ui:composition>
 </html>
