@@ -13,26 +13,35 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.CloseEvent;
 
 import com.sabio.util.Listas;
+import com.sabio.bean.FichaMedica;
 import com.sabio.bean.Pessoa;
+import com.sabio.bean.PlanoSaude;
 import com.sabio.controle.ControleSession;
 import com.sabio.servico.cadastro.PessoaServico;
+import com.sabio.servico.cadastro.PlanoSaudeServico;
 
 @ManagedBean
 @SessionScoped
 public class ControlePessoa extends ControleSession implements Serializable{
 	private static final long serialVersionUID = -7517459978933604163L;
 	private Pessoa pessoa;
-	private List<Pessoa> lista;
-	private List<String> listaSexos;
-	private List<String> listaEstadoCivis;
-	private List<String> listaNacionalidades;
+
+	private List<Pessoa> 	lista;
+	private List<String> 	listaSexos;
+	private List<String> 	listaEstadoCivis;
+	private List<String> 	listaNacionalidades;
+	private List<PlanoSaude> listaPlanoSaude;
+
+	private boolean checkTomaRemedio;
 	private String pesquisaCPF;
 	private String pesquisaRG;
 	private String pesquisaNome;
 	private String mensagem;
 	private String retorno = "cadastro";
+
 	private PessoaServico pessoaServico;
-	
+	private PlanoSaudeServico planoSaudeServico;
+
 	public ControlePessoa() {
 		super("controlePessoa");
 	}
@@ -55,6 +64,8 @@ public class ControlePessoa extends ControleSession implements Serializable{
 
 	public String incluir(){
 		pessoa = new Pessoa();
+		pessoa.setFichaMedica(new FichaMedica());
+
 		return "cadastro";
 	}
 
@@ -190,5 +201,35 @@ public class ControlePessoa extends ControleSession implements Serializable{
 
 	public void setListaNacionalidades(List<String> listaNacionalidades) {
 		this.listaNacionalidades = listaNacionalidades;
+	}
+
+	public List<PlanoSaude> getListaPlanoSaude() {
+		if(listaPlanoSaude == null){
+			listaPlanoSaude = getPlanoSaudeServico().getListTodos();
+		}
+		return listaPlanoSaude;
+	}
+
+	public void setListaPlanoSaude(List<PlanoSaude> listaPlanoSaude) {
+		this.listaPlanoSaude = listaPlanoSaude;
+	}
+
+	public PlanoSaudeServico getPlanoSaudeServico() {
+		if(planoSaudeServico == null){
+			planoSaudeServico = new PlanoSaudeServico();
+		}
+		return planoSaudeServico;
+	}
+
+	public void setPlanoSaudeServico(PlanoSaudeServico planoSaudeServico) {
+		this.planoSaudeServico = planoSaudeServico;
+	}
+
+	public boolean isCheckTomaRemedio() {
+		return checkTomaRemedio;
+	}
+
+	public void setCheckTomaRemedio(boolean checkTomaRemedio) {
+		this.checkTomaRemedio = checkTomaRemedio;
 	}
 }
