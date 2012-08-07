@@ -86,32 +86,6 @@
 									<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.folha}" styleClass="textfield" size="30" maxlength="30"/>
 								</h:panelGrid>
 							</p:panel>
-							<p:panel id="panel_fichaMedica">
-								<h:panelGrid columns="2" columnClasses="alinhaDir" title="Ficha Medica">
-									<h:outputLabel value="Plano de Saude" />
-									<h:selectOneMenu value="#{controlePessoa.pessoa.fichaMedica.planoSaude}" >  
-					                    <f:selectItems value="#{controlePessoa.listaPlanoSaude}" var="planoSaude" itemLabel="#{planoSaude.descricao}" itemValue="#{planoSaude}" />
-										<f:converter converterId="convertePlanoSaude"/>
-									</h:selectOneMenu>
-									<h:outputLabel value="Alergico" />
-									<h:selectBooleanCheckbox value="#{controlePessoa.pessoa.fichaMedica.alergico}" />
-									<h:outputLabel value="Alergias" rendered="#{controlePessoa.pessoa.fichaMedica.alergico}"/>
-									<h:inputTextarea value="#{controlePessoa.pessoa.fichaMedica.alergias}" rendered="#{controlePessoa.pessoa.fichaMedica.alergico}"/>
-									
-									
-									
-									<h:outputLabel value="Toma Remedio" />
-									<p:selectBooleanCheckbox value="#{controlePessoa.checkTomaRemedio}" >
-										<p:ajax update=":form"/>
-									</p:selectBooleanCheckbox>
-									<h:outputLabel value="Remedios" rendered="#{controlePessoa.checkTomaRemedio}" id="id_remedios"/>
-									
-									
-									
-									
-									<h:inputTextarea value="#{controlePessoa.pessoa.fichaMedica.remedios}" rendered="#{controlePessoa.pessoa.fichaMedica.tomaRemedio}"/>
-								</h:panelGrid>
-							</p:panel>
 							<h:panelGrid columns="2" columnClasses="alinhaDir" >
 								<h:column>
 									<h:outputLabel value="Parentesco" />
@@ -139,6 +113,9 @@
 										</p:column>
 									</p:dataTable>
 								</h:column>
+								<p:commandButton value="Show Dialog" onclick="dialogHello.show()" /> 
+								<p:commandButton id="showDialogButton" type="button" value="Show" onclick="dlg.show()" /> 
+								<p:commandButton id="modalDialogButton" value="Modal" onclick="dlg2.show();" type="button" icon=""/>
 								<p:commandLink oncomplete="modalPsqParentes.show();"  >
 									<h:graphicImage url="/images/botoes/btnSelecionar.png" styleClass="iconesLaterais" />
 								</p:commandLink>
@@ -150,28 +127,25 @@
 				<p:commandButton value="Gravar" action="#{controleEtnia.gravar}" icon="ui-icon-disk" />
 			</h:form>
 		</ui:define>
+<<<<<<< .mine
+		<p:dialog id="helloDialog" widgetVar="dialogHello" modal="true"> 
+			<h:outputText value="This is a Modal Dialog." /> 
+		</p:dialog>
+		<p:dialog id="modalDialog" header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">  
+		    <h:outputText value="This is a Modal Dialog." />  
+		</p:dialog>
+		<p:dialog header="Pesquisa Parentesco" widgetVar="modalPsqParentes" modal="true" onCloseUpdate="form" width="600"  id="boxPsqParentes">
+		</p:dialog>
+=======
 		<ui:define name="dialog">
 			<p:dialog header="Pesquisa Parentesco" widgetVar="modalPsqParentes" modal="true" onCloseUpdate="form" width="600"  id="boxPsqParentes">
-				<h:form id="formPesquisaPessoa">
-					<fieldset>
-						<p:tabView>
-							<p:tab title="Manuten&ccedil;&atilde;o">
-								<h:panelGrid columns="2" columnClasses="width150 alinhaDir" >	
-									<h:outputLabel value="CPF:" />
-									<h:inputText value="#{controlePessoa.pesquisaCPF}" styleClass="textfield" size="15" maxlength="11" />
-									<h:outputLabel value="RG:" />
-									<h:inputText value="#{controlePessoa.pesquisaRG}" styleClass="textfield" size="20" maxlength="20" />
-									<h:outputLabel value="Nome:" />
-									<h:inputText value="#{controlePessoa.pesquisaNome}" styleClass="textfield" size="80" maxlength="100" />
-								</h:panelGrid>
-							</p:tab>
-						</p:tabView>
-					</fieldset>
-					<p:commandButton value="Pesquisar" action="#{controlePessoa.pesquisar}" icon="ui-icon-search" update=":listaPesquisaPessoa" />
-				</h:form>
-				<h:form id="listaPesquisaPessoa" >
-				</h:form>
 			</p:dialog>
 		</ui:define>	
+>>>>>>> .r18
+		<p:dialog header="Enter FirstName" widgetVar="dlg" resizable="false">  
+		    <h:form id="form"> 
+		    <h:outputText value="This is a Modal Dialog." />  
+		    </h:form>
+	    </p:dialog>
 	</ui:composition>
 </html>

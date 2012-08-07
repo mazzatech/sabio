@@ -94,4 +94,8 @@ public class PlanoSaudeServico {
 	public void setPlanoSaude(PlanoSaude planoSaude) {
 		this.planoSaude = planoSaude;
 	}
+	
+	public List<PlanoSaude> getListTodos(){
+		return DAOFactory.getPlanoSaudeDAO().getListTodos();
+	}
 }
