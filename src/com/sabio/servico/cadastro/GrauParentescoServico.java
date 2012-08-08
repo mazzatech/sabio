@@ -1,5 +1,6 @@
 package com.sabio.servico.cadastro;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.sabio.bean.GrauParentesco;
@@ -8,8 +9,8 @@ import com.sabio.servico.validador.GeraMensagem;
 import com.sabio.servico.validador.ValidadorFactory;
 import com.sabio.servico.validador.Validar;
 
-public class GrauParentescoServico {
-
+public class GrauParentescoServico implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private GrauParentesco grauParentesco;
 	private String mensagem;
 
