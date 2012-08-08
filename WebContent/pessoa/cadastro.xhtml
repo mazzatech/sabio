@@ -103,15 +103,15 @@
 										
 										
 										<h:outputLabel value="Toma Remedio" />
-										<p:selectBooleanCheckbox value="#{controlePessoa.checkTomaRemedio}" >
+										<h:selectBooleanCheckbox value="#{controlePessoa.checkTomaRemedio}" >
 											<p:ajax update=":form"/>
-										</p:selectBooleanCheckbox>
+										</h:selectBooleanCheckbox>
 										<h:outputLabel value="Remedios" rendered="#{controlePessoa.checkTomaRemedio}" id="id_remedios"/>
 										
 										
 										
 										
-										<h:inputTextarea value="#{controlePessoa.pessoa.fichaMedica.remedios}" rendered="#{controlePessoa.pessoa.fichaMedica.tomaRemedio}"/>
+										<h:inputTextarea value="#{controlePessoa.pessoa.fichaMedica.remedios}" rendered="#{controlePessoa.checkTomaRemedio}"/>
 									</h:panelGrid>
 								</p:panel>
 								<h:panelGrid columns="2" columnClasses="alinhaDir" >
