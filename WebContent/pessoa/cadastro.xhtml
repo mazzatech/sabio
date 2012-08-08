@@ -10,142 +10,145 @@
 			<!-- FORM PRINCIPAL -->
 			<h:form id="form">
 				<p:growl id="messages"/>
-				<fieldset>
-					<h:panelGrid columnClasses="alinhaDir">
-						<h:column>
-							<h:panelGrid columns="2" columnClasses="alinhaDir" >
-								<h:column >
-								</h:column>
-								<h:column >
-									<h:outputText value="Os campos com asterisco (*) s&atilde;o de preenchimento obrigat&oacute;rio." styleClass="campoObrigatorio" />
-								</h:column>
-								<h:outputLabel value="CPF:" styleClass="select" />
-								<h:column >
-									<h:inputText type="text" class="textfield" id="cpf" size="15" value="#{controlePessoa.pessoa.CPF}" maxlength="11" requiredMessage="Campo [CPF] obrigat&oacute;rio" required="true" alt=""/>
-									<h:outputText value="(*)" styleClass="campoObrigatorio" />
-								</h:column>
-								<h:outputLabel value="RG:" styleClass="select" />
-								<h:column >
-									<h:inputText type="text" class="textfield" id="rg" size="15" value="#{controlePessoa.pessoa.RG}" maxlength="11" requiredMessage="Campo [RG] obrigat&oacute;rio" required="true" alt=""/>
-									<h:outputText value="(*)" styleClass="campoObrigatorio" />
-								</h:column>
-								<h:outputLabel value="Nome:" />
-								<h:column >
-									<h:inputText value="#{controlePessoa.pessoa.nome}" styleClass="textfield" size="80" maxlength="100" requiredMessage="Campo [RG] obrigat&oacute;rio"/>
-								</h:column>
-								<h:outputLabel value="Data Nascimento:" />
-								<h:column >
-									<p:calendar value="#{controlePessoa.pessoa.dataNascimento}" mode="popup" pattern="dd/MM/yyyy" requiredMessage="Campo [RG] obrigat&oacute;rio"/>
-								</h:column>
-								<h:column>
-									<h:outputLabel value="Sexo:" />
-								</h:column>
-								<h:column>
-									<h:selectOneMenu value="#{controlePessoa.pessoa.sexo}">  
-					                    <f:selectItems value="#{controlePessoa.listaSexos}" var="sexo" itemLabel="#{sexo}" itemValue="#{sexo}" />
-									</h:selectOneMenu>
-									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
-								</h:column>
-								<h:column>
-									<h:outputLabel value="Estado Civil:" />
-								</h:column>
-								<h:column>
-									<h:selectOneMenu value="#{controlePessoa.pessoa.estadoCivil}" requiredMessage="Campo [ESTADO CIVIL] obrigat&oacute;rio" required="true" >  
-					                    <f:selectItems value="#{controlePessoa.listaEstadoCivis}" var="estadoCivil" itemLabel="#{estadoCivil}" itemValue="#{estadoCivil}"   />
-									</h:selectOneMenu>
-									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
-									
-									<h:outputLabel value="Nacionalidade:" />&nbsp;
-									<h:selectOneMenu value="#{controlePessoa.pessoa.nacionalidade}" requiredMessage="Campo [NACIONALIDADE] obrigat&oacute;rio" required="true" >  
-					                    <f:selectItems value="#{controlePessoa.listaNacionalidades}" var="nacionalidade" itemLabel="#{nacionalidade}" itemValue="#{nacionalidade}" />
-									</h:selectOneMenu>
-									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
-								</h:column>
-								<h:outputLabel value="Email:" />
-								<h:column >
-									<h:inputText value="#{controlePessoa.pessoa.email}" styleClass="textfield" size="80" maxlength="100" />
-								</h:column>
-								<h:outputLabel value="Escolaridade:" />
-								<h:column >
-									<h:inputText value="#{controlePessoa.pessoa.escolaridade}" styleClass="textfield" size="80" maxlength="100" requiredMessage="Campo [ESCOLARIDADE] obrigat&oacute;rio"/>
-									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
-								</h:column>
-								<h:outputLabel value="Profissao" />
-								<h:column >
-									<h:inputText value="#{controlePessoa.pessoa.profissao}" styleClass="textfield" size="80" maxlength="100" requiredMessage="Campo [PROFISSAO] obrigat&oacute;rio"/>
-									<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
-								</h:column>
-							</h:panelGrid>
-							<p:panel>
-								<h:panelGrid columns="2" columnClasses="alinhaDir" title="Certidao Nascimento">
-									<h:outputLabel value="Numero" />
-									<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.numeroCertidaoNascimento}" styleClass="textfield" size="30" maxlength="30"/>
-									<h:outputLabel value="Livro" />
-									<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.livro}" styleClass="textfield" size="30" maxlength="30"/>
-									<h:outputLabel value="Folha" />
-									<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.folha}" styleClass="textfield" size="30" maxlength="30"/>
+				<p:tabView>
+					<p:tab title="Cadastro de Pessoa">
+						<h:panelGrid columnClasses="alinhaDir">
+							<h:column>
+								<h:panelGrid columns="2" columnClasses="alinhaDir" >
+									<h:column >
+									</h:column>
+									<h:column >
+										<h:outputText value="Os campos com asterisco (*) s&atilde;o de preenchimento obrigat&oacute;rio." styleClass="campoObrigatorio" />
+									</h:column>
+									<h:outputLabel value="CPF:" styleClass="select" />
+									<h:column >
+										<h:inputText type="text" class="textfield" id="cpf" size="15" value="#{controlePessoa.pessoa.CPF}" maxlength="11" requiredMessage="Campo [CPF] obrigat&oacute;rio" required="true" alt=""/>
+										<h:outputText value="(*)" styleClass="campoObrigatorio" />
+									</h:column>
+									<h:outputLabel value="RG:" styleClass="select" />
+									<h:column >
+										<h:inputText type="text" class="textfield" id="rg" size="15" value="#{controlePessoa.pessoa.RG}" maxlength="11" requiredMessage="Campo [RG] obrigat&oacute;rio" required="true" alt=""/>
+										<h:outputText value="(*)" styleClass="campoObrigatorio" />
+									</h:column>
+									<h:outputLabel value="Nome:" />
+									<h:column >
+										<h:inputText value="#{controlePessoa.pessoa.nome}" styleClass="textfield" size="80" maxlength="100" requiredMessage="Campo [RG] obrigat&oacute;rio"/>
+									</h:column>
+									<h:outputLabel value="Data Nascimento:" />
+									<h:column >
+										<p:calendar value="#{controlePessoa.pessoa.dataNascimento}" mode="popup" pattern="dd/MM/yyyy" requiredMessage="Campo [RG] obrigat&oacute;rio"/>
+									</h:column>
+									<h:column>
+										<h:outputLabel value="Sexo:" />
+									</h:column>
+									<h:column>
+										<h:selectOneMenu value="#{controlePessoa.pessoa.sexo}">  
+						                    <f:selectItems value="#{controlePessoa.listaSexos}" var="sexo" itemLabel="#{sexo}" itemValue="#{sexo}" />
+										</h:selectOneMenu>
+										<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+									</h:column>
+									<h:column>
+										<h:outputLabel value="Estado Civil:" />
+									</h:column>
+									<h:column>
+										<h:selectOneMenu value="#{controlePessoa.pessoa.estadoCivil}" requiredMessage="Campo [ESTADO CIVIL] obrigat&oacute;rio" required="true" >  
+						                    <f:selectItems value="#{controlePessoa.listaEstadoCivis}" var="estadoCivil" itemLabel="#{estadoCivil}" itemValue="#{estadoCivil}"   />
+										</h:selectOneMenu>
+										<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+										
+										<h:outputLabel value="Nacionalidade:" />&nbsp;
+										<h:selectOneMenu value="#{controlePessoa.pessoa.nacionalidade}" requiredMessage="Campo [NACIONALIDADE] obrigat&oacute;rio" required="true" >  
+						                    <f:selectItems value="#{controlePessoa.listaNacionalidades}" var="nacionalidade" itemLabel="#{nacionalidade}" itemValue="#{nacionalidade}" />
+										</h:selectOneMenu>
+										<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+									</h:column>
+									<h:outputLabel value="Email:" />
+									<h:column >
+										<h:inputText value="#{controlePessoa.pessoa.email}" styleClass="textfield" size="80" maxlength="100" />
+									</h:column>
+									<h:outputLabel value="Escolaridade:" />
+									<h:column >
+										<h:inputText value="#{controlePessoa.pessoa.escolaridade}" styleClass="textfield" size="80" maxlength="100" requiredMessage="Campo [ESCOLARIDADE] obrigat&oacute;rio"/>
+										<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+									</h:column>
+									<h:outputLabel value="Profissao" />
+									<h:column >
+										<h:inputText value="#{controlePessoa.pessoa.profissao}" styleClass="textfield" size="80" maxlength="100" requiredMessage="Campo [PROFISSAO] obrigat&oacute;rio"/>
+										<h:outputText value="(*)" styleClass="campoObrigatorio" />&nbsp;
+									</h:column>
 								</h:panelGrid>
-							</p:panel>
-							<p:panel id="panel_fichaMedica">
-								<h:panelGrid columns="2" columnClasses="alinhaDir" title="Ficha Medica">
-									<h:outputLabel value="Plano de Saude" />
-									<h:selectOneMenu value="#{controlePessoa.pessoa.fichaMedica.planoSaude}" >  
-					                    <f:selectItems value="#{controlePessoa.listaPlanoSaude}" var="planoSaude" itemLabel="#{planoSaude.descricao}" itemValue="#{planoSaude}" />
-										<f:converter converterId="convertePlanoSaude"/>
-									</h:selectOneMenu>
-									<h:outputLabel value="Alergico" />
-									<h:selectBooleanCheckbox value="#{controlePessoa.pessoa.fichaMedica.alergico}" />
-									<h:outputLabel value="Alergias" rendered="#{controlePessoa.pessoa.fichaMedica.alergico}"/>
-									<h:inputTextarea value="#{controlePessoa.pessoa.fichaMedica.alergias}" rendered="#{controlePessoa.pessoa.fichaMedica.alergico}"/>
-									
-									
-									
-									<h:outputLabel value="Toma Remedio" />
-									<p:selectBooleanCheckbox value="#{controlePessoa.checkTomaRemedio}" >
-										<p:ajax update=":form"/>
-									</p:selectBooleanCheckbox>
-									<h:outputLabel value="Remedios" rendered="#{controlePessoa.checkTomaRemedio}" id="id_remedios"/>
-									
-									
-									
-									
-									<h:inputTextarea value="#{controlePessoa.pessoa.fichaMedica.remedios}" rendered="#{controlePessoa.pessoa.fichaMedica.tomaRemedio}"/>
+								<p:panel header="Certidão de Nascimento" id="id_certidaoNascimento">
+									<h:panelGrid columns="2" columnClasses="alinhaDir" title="Certidao Nascimento">
+										<h:outputLabel value="Numero" />
+										<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.numeroCertidaoNascimento}" styleClass="textfield" size="30" maxlength="30"/>
+										<h:outputLabel value="Livro" />
+										<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.livro}" styleClass="textfield" size="30" maxlength="30"/>
+										<h:outputLabel value="Folha" />
+										<h:inputText value="#{controlePessoa.pessoa.certidaoNascimento.folha}" styleClass="textfield" size="30" maxlength="30"/>
+									</h:panelGrid>
+								</p:panel>
+								<br />
+								<p:panel header="Ficha Médica" id="panel_fichaMedica">
+									<h:panelGrid columns="2" columnClasses="alinhaDir" title="Ficha Medica">
+										<h:outputLabel value="Plano de Saude" />
+										<h:selectOneMenu value="#{controlePessoa.pessoa.fichaMedica.planoSaude}" >  
+						                    <f:selectItems value="#{controlePessoa.listaPlanoSaude}" var="planoSaude" itemLabel="#{planoSaude.descricao}" itemValue="#{planoSaude}" />
+											<f:converter converterId="convertePlanoSaude"/>
+										</h:selectOneMenu>
+										<h:outputLabel value="Alergico" />
+										<h:selectBooleanCheckbox value="#{controlePessoa.pessoa.fichaMedica.alergico}" />
+										<h:outputLabel value="Alergias" rendered="#{controlePessoa.pessoa.fichaMedica.alergico}"/>
+										<h:inputTextarea value="#{controlePessoa.pessoa.fichaMedica.alergias}" rendered="#{controlePessoa.pessoa.fichaMedica.alergico}"/>
+										
+										
+										
+										<h:outputLabel value="Toma Remedio" />
+										<p:selectBooleanCheckbox value="#{controlePessoa.checkTomaRemedio}" >
+											<p:ajax update=":form"/>
+										</p:selectBooleanCheckbox>
+										<h:outputLabel value="Remedios" rendered="#{controlePessoa.checkTomaRemedio}" id="id_remedios"/>
+										
+										
+										
+										
+										<h:inputTextarea value="#{controlePessoa.pessoa.fichaMedica.remedios}" rendered="#{controlePessoa.pessoa.fichaMedica.tomaRemedio}"/>
+									</h:panelGrid>
+								</p:panel>
+								<h:panelGrid columns="2" columnClasses="alinhaDir" >
+									<h:column>
+										<h:outputLabel value="Parentesco" />
+									</h:column>
+									<h:column>
+										<p:dataTable value="#{controlePessoa.pessoa.parentescos}" 
+										             id="id_Lista_Parentesco"
+										             var="parentesco" 
+													 rowKey="#{parentesco.codigoParentesco}"
+										             rendered="#{not empty controleParentesco.lista}" 
+										             emptyMessage="Nenhum parentesco encontrado"
+										             errorMessage="Ocorreu um erro"
+										             selectionMode="single" >
+											<p:column sortBy="#{parentesco.pessoa.nome}" resizable="true">
+												<f:facet name="header">
+													<h:outputText value="Nome" />
+												</f:facet>
+												<h:outputText value="#{parentesco.pessoa.nome}" />
+											</p:column>
+											<p:column sortBy="#{parentesco.grauParentesco.descricao}" resizable="true">
+												<f:facet name="header">
+													<h:outputText value="Grau" />
+												</f:facet>
+												<h:outputText value="#{parentesco.grauParentesco.descricao}" />
+											</p:column>
+										</p:dataTable>
+									</h:column>
+									<p:commandLink oncomplete="modalPsqParentes.show();"  >
+										<h:graphicImage url="/images/botoes/btnSelecionar.png" styleClass="iconesLaterais" />
+									</p:commandLink>
 								</h:panelGrid>
-							</p:panel>
-							<h:panelGrid columns="2" columnClasses="alinhaDir" >
-								<h:column>
-									<h:outputLabel value="Parentesco" />
-								</h:column>
-								<h:column>
-									<p:dataTable value="#{controlePessoa.pessoa.parentescos}" 
-									             id="id_Lista_Parentesco"
-									             var="parentesco" 
-												 rowKey="#{parentesco.codigoParentesco}"
-									             rendered="#{not empty controleParentesco.lista}" 
-									             emptyMessage="Nenhum parentesco encontrado"
-									             errorMessage="Ocorreu um erro"
-									             selectionMode="single" >
-										<p:column sortBy="#{parentesco.pessoa.nome}" resizable="true">
-											<f:facet name="header">
-												<h:outputText value="Nome" />
-											</f:facet>
-											<h:outputText value="#{parentesco.pessoa.nome}" />
-										</p:column>
-										<p:column sortBy="#{parentesco.grauParentesco.descricao}" resizable="true">
-											<f:facet name="header">
-												<h:outputText value="Grau" />
-											</f:facet>
-											<h:outputText value="#{parentesco.grauParentesco.descricao}" />
-										</p:column>
-									</p:dataTable>
-								</h:column>
-								<p:commandLink oncomplete="modalPsqParentes.show();"  >
-									<h:graphicImage url="/images/botoes/btnSelecionar.png" styleClass="iconesLaterais" />
-								</p:commandLink>
-							</h:panelGrid>
-						</h:column>		
-					</h:panelGrid>
-				</fieldset>
+							</h:column>		
+						</h:panelGrid>
+					</p:tab>				
+				</p:tabView>	
 				<p:commandButton value="Pesquisar" action="#{controleEtnia.manutencao}" icon="ui-icon-search" ajax="false" immediate="true" />
 				<p:commandButton value="Gravar" action="#{controleEtnia.gravar}" icon="ui-icon-disk" />
 			</h:form>
