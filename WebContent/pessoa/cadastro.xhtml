@@ -9,7 +9,7 @@
 		<ui:define name="conteudo">
 			<!-- FORM PRINCIPAL -->
 			<h:form id="form">
-				<p:growl id="messages"/>
+				<p:growl id="messages" showDetail="true" sticky="false"/>
 				<p:tabView>
 					<p:tab title="Cadastro de Pessoa">
 						<h:panelGrid columnClasses="alinhaDir">
@@ -151,7 +151,7 @@
 					</p:tab>				
 				</p:tabView>	
 				<p:commandButton value="Pesquisar" action="#{controlePessoa.manutencao}" icon="ui-icon-search" ajax="false" immediate="true" />
-				<p:commandButton value="Gravar" action="#{controlePessoa.gravar}" icon="ui-icon-disk" />
+				<p:commandButton value="Gravar" action="#{controlePessoa.gravar}" icon="ui-icon-disk" update=":form"/>
 			</h:form>
 		</ui:define>
 		<ui:define name="dialog">
