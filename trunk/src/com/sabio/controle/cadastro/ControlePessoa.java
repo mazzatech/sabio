@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.CloseEvent;
 
 import com.sabio.util.Listas;
+import com.sabio.bean.CertidaoNascimento;
 import com.sabio.bean.FichaMedica;
 import com.sabio.bean.Pessoa;
 import com.sabio.bean.PlanoSaude;
@@ -67,6 +68,7 @@ public class ControlePessoa extends ControleSession implements Serializable{
 	public String incluir(){
 		pessoa = new Pessoa();
 		pessoa.setFichaMedica(new FichaMedica());
+		pessoa.setCertidaoNascimento(new CertidaoNascimento());
 
 		return "cadastro";
 	}
