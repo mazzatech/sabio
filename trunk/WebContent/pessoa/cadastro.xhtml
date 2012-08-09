@@ -5,7 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 	<ui:composition template="/templates/padrao.xhtml">
-		<ui:define name="barraTitulo"> Cadastro de Etnia</ui:define>
+		<ui:define name="barraTitulo"> Cadastro de Pessoa</ui:define>
 		<ui:define name="conteudo">
 			<!-- FORM PRINCIPAL -->
 			<h:form id="form">
@@ -32,11 +32,11 @@
 									</h:column>
 									<h:outputLabel value="Nome:" />
 									<h:column >
-										<h:inputText value="#{controlePessoa.pessoa.nome}" styleClass="textfield" size="80" maxlength="100" requiredMessage="Campo [RG] obrigat&oacute;rio"/>
+										<h:inputText value="#{controlePessoa.pessoa.nome}" styleClass="textfield" size="80" maxlength="100" requiredMessage="Campo [RG] obrigat&oacute;rio" required="true"/>
 									</h:column>
 									<h:outputLabel value="Data Nascimento:" />
 									<h:column >
-										<p:calendar value="#{controlePessoa.pessoa.dataNascimento}" mode="popup" pattern="dd/MM/yyyy" requiredMessage="Campo [RG] obrigat&oacute;rio"/>
+										<p:calendar value="#{controlePessoa.pessoa.dataNascimento}" mode="popup" pattern="dd/MM/yyyy" requiredMessage="Campo [RG] obrigat&oacute;rio" required="true"/>
 									</h:column>
 									<h:column>
 										<h:outputLabel value="Sexo:" />
@@ -96,21 +96,22 @@
 											<f:converter converterId="convertePlanoSaude"/>
 										</h:selectOneMenu>
 										<h:outputLabel value="Alergico" />
-										<h:selectBooleanCheckbox value="#{controlePessoa.pessoa.fichaMedica.alergico}" />
-										<h:outputLabel value="Alergias" rendered="#{controlePessoa.pessoa.fichaMedica.alergico}"/>
-										<h:inputTextarea value="#{controlePessoa.pessoa.fichaMedica.alergias}" rendered="#{controlePessoa.pessoa.fichaMedica.alergico}"/>
-										
-										
-										
+										<h:selectBooleanCheckbox value="#{controlePessoa.checkAlergico}">
+											<p:ajax update="panel_alergicos"/>
+										</h:selectBooleanCheckbox>
+									</h:panelGrid>
+									<h:panelGrid columns="2" columnClasses="alinhaDir" id="panel_alergicos">
+										<h:outputLabel value="Alergias" rendered="#{controlePessoa.checkAlergico}"/>
+										<h:inputTextarea value="#{controlePessoa.pessoa.fichaMedica.alergias}" rendered="#{controlePessoa.checkAlergico}"/>
+									</h:panelGrid>
+									<h:panelGrid columns="2" columnClasses="alinhaDir">
 										<h:outputLabel value="Toma Remedio" />
 										<h:selectBooleanCheckbox value="#{controlePessoa.checkTomaRemedio}" >
-											<p:ajax update=":form"/>
+											<p:ajax update="panel_remedios"/>
 										</h:selectBooleanCheckbox>
+									</h:panelGrid>
+									<h:panelGrid columns="2" columnClasses="alinhaDir" id="panel_remedios">
 										<h:outputLabel value="Remedios" rendered="#{controlePessoa.checkTomaRemedio}" id="id_remedios"/>
-										
-										
-										
-										
 										<h:inputTextarea value="#{controlePessoa.pessoa.fichaMedica.remedios}" rendered="#{controlePessoa.checkTomaRemedio}"/>
 									</h:panelGrid>
 								</p:panel>
@@ -149,8 +150,8 @@
 						</h:panelGrid>
 					</p:tab>				
 				</p:tabView>	
-				<p:commandButton value="Pesquisar" action="#{controleEtnia.manutencao}" icon="ui-icon-search" ajax="false" immediate="true" />
-				<p:commandButton value="Gravar" action="#{controleEtnia.gravar}" icon="ui-icon-disk" />
+				<p:commandButton value="Pesquisar" action="#{controlePessoa.manutencao}" icon="ui-icon-search" ajax="false" immediate="true" />
+				<p:commandButton value="Gravar" action="#{controlePessoa.gravar}" icon="ui-icon-disk" />
 			</h:form>
 		</ui:define>
 		<ui:define name="dialog">
