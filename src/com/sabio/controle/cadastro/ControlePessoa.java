@@ -33,6 +33,8 @@ public class ControlePessoa extends ControleSession implements Serializable{
 	private List<PlanoSaude> listaPlanoSaude;
 
 	private boolean checkTomaRemedio;
+	private boolean checkAlergico;
+
 	private String pesquisaCPF;
 	private String pesquisaRG;
 	private String pesquisaNome;
@@ -231,5 +233,13 @@ public class ControlePessoa extends ControleSession implements Serializable{
 
 	public void setCheckTomaRemedio(boolean checkTomaRemedio) {
 		this.checkTomaRemedio = checkTomaRemedio;
+	}
+
+	public boolean isCheckAlergico() {
+		return checkAlergico;
+	}
+
+	public void setCheckAlergico(boolean checkAlergico) {
+		this.checkAlergico = checkAlergico;
 	}
 }
